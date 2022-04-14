@@ -1,0 +1,17 @@
+rootProject.name = 'gradle-poc'
+
+include(':runtime', ':deployment')
+
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.quarkus:gradle-application-plugin:2.8.0.Final"
+        classpath "io.quarkus.extension:gradle-extension-plugin:2.8.0.Final"
+    }
+}

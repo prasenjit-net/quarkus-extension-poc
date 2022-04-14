@@ -1,0 +1,10 @@
+plugins {
+    id 'io.quarkus.extension'
+}
+
+description = 'Gradle POC Extension'
+
+dependencies {
+    implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")
+    implementation 'io.quarkus:quarkus-undertow'
+}

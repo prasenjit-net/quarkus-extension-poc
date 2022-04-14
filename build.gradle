@@ -1,0 +1,22 @@
+ext {
+    revision = '1.0-SNAPSHOT'
+    grouipId = 'net.prasenjit.poc.quarkus'
+}
+
+group grouipId
+version revision
+
+allprojects {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+
+    group grouipId
+    version revision
+}
