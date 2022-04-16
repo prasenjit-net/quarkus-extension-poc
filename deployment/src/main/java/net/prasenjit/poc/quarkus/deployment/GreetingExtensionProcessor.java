@@ -32,7 +32,7 @@ public class GreetingExtensionProcessor {
     }
 
     @BuildStep
-    public void jaxrsProviders(BuildProducer<ResteasyJaxrsProviderBuildItem> providers) {
+    public void restEasyProviders(BuildProducer<ResteasyJaxrsProviderBuildItem> providers) {
         providers.produce(new ResteasyJaxrsProviderBuildItem(ReqFilter.class.getName()));
     }
 
