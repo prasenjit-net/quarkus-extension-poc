@@ -1,6 +1,6 @@
 rootProject.name = 'gradle-poc'
 
-include(':runtime', ':deployment')
+include(':runtime', ':deployment', ':integration-tests')
 
 buildscript {
     repositories {
@@ -13,5 +13,6 @@ buildscript {
     dependencies {
         classpath "io.quarkus:gradle-application-plugin:2.8.0.Final"
         classpath "io.quarkus.extension:gradle-extension-plugin:2.8.0.Final"
+        classpath 'org.kordamp.gradle:jandex-gradle-plugin:0.11.0'
     }
 }

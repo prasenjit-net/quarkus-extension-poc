@@ -1,10 +1,11 @@
 description = 'Gradle POC extension deployment'
 
 dependencies {
+    implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")
     implementation project(':runtime')
     implementation 'io.quarkus:quarkus-undertow-deployment'
+    implementation 'io.quarkus:quarkus-resteasy-deployment'
 
-    implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")
 
     testImplementation 'io.quarkus:quarkus-junit5-internal'
     testImplementation 'io.rest-assured:rest-assured'

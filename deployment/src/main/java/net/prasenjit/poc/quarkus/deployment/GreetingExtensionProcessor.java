@@ -1,11 +1,14 @@
 package net.prasenjit.poc.quarkus.deployment;
 
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
+import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
+import io.quarkus.resteasy.common.spi.ResteasyJaxrsProviderBuildItem;
 import io.quarkus.undertow.deployment.ServletBuildItem;
 import net.prasenjit.poc.quarkus.runtime.ExtensionBean;
 import net.prasenjit.poc.quarkus.runtime.GreetingExtensionServlet;
+import net.prasenjit.poc.quarkus.runtime.ReqFilter;
 
 public class GreetingExtensionProcessor {
 
@@ -25,7 +28,12 @@ public class GreetingExtensionProcessor {
 
     @BuildStep
     AdditionalBeanBuildItem createExtensionBean() {
-        return AdditionalBeanBuildItem.builder().addBeanClass(ExtensionBean.class).build();
+        return AdditionalBeanBuildItem.builder().addBeanClasses(ExtensionBean.class).build();
+    }
+
+    @BuildStep
+    public void jaxrsProviders(BuildProducer<ResteasyJaxrsProviderBuildItem> providers) {
+        providers.produce(new ResteasyJaxrsProviderBuildItem(ReqFilter.class.getName()));
     }
 
 }

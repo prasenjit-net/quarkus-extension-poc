@@ -1,0 +1,12 @@
+plugins {
+    id('java')
+    id('io.quarkus')
+}
+
+description = 'Gradle POC Extension Integration Test'
+
+dependencies {
+    implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")
+    implementation(project(':runtime'))
+    implementation('io.quarkus:quarkus-resteasy')
+}
