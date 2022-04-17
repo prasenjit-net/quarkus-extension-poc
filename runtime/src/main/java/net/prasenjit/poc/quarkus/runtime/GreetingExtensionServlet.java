@@ -6,6 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * An example servlet registration
+ *
+ * @author Prasenjit Purohit
+ */
 @WebServlet
 public class GreetingExtensionServlet extends HttpServlet {
 
