@@ -1,6 +1,7 @@
 package net.prasenjit.poc.quarkus.deployment;
 
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
+import io.quarkus.arc.processor.BuiltinScope;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
@@ -28,7 +29,10 @@ public class GreetingExtensionProcessor {
 
     @BuildStep
     AdditionalBeanBuildItem createExtensionBean() {
-        return AdditionalBeanBuildItem.builder().addBeanClasses(ExtensionBean.class).build();
+        return AdditionalBeanBuildItem.builder()
+                .addBeanClasses(ExtensionBean.class)
+                .setDefaultScope(BuiltinScope.APPLICATION.getName())
+                .build();
     }
 
     @BuildStep

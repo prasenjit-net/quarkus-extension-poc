@@ -1,10 +1,16 @@
 package net.prasenjit.poc.quarkus.runtime;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
-@ApplicationScoped
 public class ExtensionBean {
+
+    @Inject
+    MyConfig config;
+
     public String greet(String name) {
+        if (name == null) {
+            name = config.name();
+        }
         return "Hello " + name;
     }
 }

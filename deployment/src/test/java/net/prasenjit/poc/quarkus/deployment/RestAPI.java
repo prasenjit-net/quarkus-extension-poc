@@ -1,23 +1,29 @@
-package net.prasenjit.poc.ext.test;
+package net.prasenjit.poc.quarkus.deployment;
 
 import net.prasenjit.poc.quarkus.runtime.ExtensionBean;
-import net.prasenjit.poc.quarkus.runtime.MyConfig;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
-@Path("/exp")
-public class ExampleRes {
+@Path("/rest")
+public class RestAPI {
 
     @Inject
     ExtensionBean extensionBean;
 
-    @Inject
-    MyConfig config;
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getAPI() {
+        return "a text";
+    }
 
     @GET
+    @Path("/greet")
+    @Produces(MediaType.TEXT_PLAIN)
     public String greet(@QueryParam("name") String name) {
         return extensionBean.greet(name);
     }
