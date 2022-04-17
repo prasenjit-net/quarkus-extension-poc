@@ -19,4 +19,22 @@ subprojects {
 
     group grouipId
     version revision
+
+    publishing {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/prasenjit-net/quarkus-extension-poc")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                }
+            }
+        }
+        publications {
+            gpr(MavenPublication) {
+                from(components.java)
+            }
+        }
+    }
 }
