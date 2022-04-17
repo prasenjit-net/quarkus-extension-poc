@@ -1,12 +1,31 @@
 ext {
     revision = '1.0-SNAPSHOT'
+    revision1 = '1.0-SNAPSHOT'
     grouipId = 'net.prasenjit.poc.quarkus'
 
     boolean ci = System.getenv("CI")
     if (ci) {
         String REF = System.getenv("GITHUB_REF")
+        String REF_TYPE = System.getenv("GITHUB_REF_TYPE")
         project.logger.info("CI Environment with ref ${REF}")
         System.out.println(REF)
+        System.out.println(REF_TYPE)
+        ref_values = REF.split('/')
+        switch (ref_values[1]) {
+            case 'heads':
+                if (ref_values[2] != 'master') {
+                    revision1 = ref_values[2] + '-SNAPSHOT'
+                }
+                break
+            case 'tags':
+                if (ref_values[2].startsWith('v') || ref_values[2].startsWith('V')) {
+                    revision1 = ref_values[2].substring(1)
+                }
+                break
+            case 'pull':
+                revision1 = "PR${ref_values[2]}-SNAPSHOT"
+        }
+        System.out.printf('Derived Version %s', revision1)
     } else {
         project.logger.info("NOT CI Environment")
     }
