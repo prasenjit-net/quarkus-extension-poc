@@ -58,6 +58,9 @@ subprojects {
         publications {
             gpr(MavenPublication) {
                 from(components.java)
+                pom {
+                    name = "POC Quarkus Ext ${project.name}"
+                }
             }
         }
     }
