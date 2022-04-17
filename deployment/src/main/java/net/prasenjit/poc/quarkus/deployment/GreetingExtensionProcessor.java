@@ -11,15 +11,30 @@ import net.prasenjit.poc.quarkus.runtime.ExtensionBean;
 import net.prasenjit.poc.quarkus.runtime.GreetingExtensionServlet;
 import net.prasenjit.poc.quarkus.runtime.ReqFilter;
 
+/**
+ * A deployment processor class
+ *
+ * @author Prasenjit Purohit
+ */
 public class GreetingExtensionProcessor {
 
     private static final String FEATURE = "gradle-poc";
 
+    /**
+     * Feature build step
+     *
+     * @return build step
+     */
     @BuildStep
     FeatureBuildItem feature() {
         return new FeatureBuildItem(FEATURE);
     }
 
+    /**
+     * A servlet build step
+     *
+     * @return build step
+     */
     @BuildStep
     ServletBuildItem createServlet() {
         return ServletBuildItem.builder("gradle-poc", GreetingExtensionServlet.class.getName())
@@ -27,6 +42,11 @@ public class GreetingExtensionProcessor {
                 .build();
     }
 
+    /**
+     * register additional bean
+     *
+     * @return bean build step
+     */
     @BuildStep
     AdditionalBeanBuildItem createExtensionBean() {
         return AdditionalBeanBuildItem.builder()
@@ -35,6 +55,11 @@ public class GreetingExtensionProcessor {
                 .build();
     }
 
+    /**
+     * resteasy provider build step
+     *
+     * @param providers build step producer injected
+     */
     @BuildStep
     public void restEasyProviders(BuildProducer<ResteasyJaxrsProviderBuildItem> providers) {
         providers.produce(new ResteasyJaxrsProviderBuildItem(ReqFilter.class.getName()));

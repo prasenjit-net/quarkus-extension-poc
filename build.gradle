@@ -44,6 +44,21 @@ subprojects {
     group grouipId
     version revision
 
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+
     publishing {
         repositories {
             maven {
@@ -61,6 +76,8 @@ subprojects {
                 pom {
                     name = "POC Quarkus Ext ${project.name}"
                 }
+                artifact sourcesJar
+                artifact javadocJar
             }
         }
     }
