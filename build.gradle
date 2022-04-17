@@ -1,6 +1,15 @@
 ext {
     revision = '1.0-SNAPSHOT'
     grouipId = 'net.prasenjit.poc.quarkus'
+
+    boolean ci = System.getenv("CI")
+    if (ci) {
+        String REF = System.getenv("GITHUB_REF")
+        project.logger.info("CI Environment with ref ${REF}")
+        System.out.println(REF)
+    } else {
+        project.logger.info("NOT CI Environment")
+    }
 }
 
 group grouipId
