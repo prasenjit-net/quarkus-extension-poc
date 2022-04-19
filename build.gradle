@@ -40,9 +40,23 @@ allprojects {
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'maven-publish'
+    apply plugin: 'jacoco'
 
     group grouipId
     version revision
+
+    test {
+        systemProperty('java.util.logging.manager', 'org.jboss.logmanager.LogManager')
+        finalizedBy jacocoTestReport
+    }
+
+    jacocoTestReport {
+        dependsOn test
+        reports {
+            xml.required = true
+            html.required = false
+        }
+    }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
         classifier = 'sources'

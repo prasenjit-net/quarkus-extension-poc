@@ -1,8 +1,8 @@
-description = 'Gradle POC extension deployment'
+description = 'Extension 1 deployment'
 
 dependencies {
     implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")
-    implementation project(':runtime')
+    implementation project(':extension1')
     implementation 'io.quarkus:quarkus-undertow-deployment'
     implementation 'io.quarkus:quarkus-resteasy-deployment'
 
@@ -11,7 +11,4 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured'
 }
 
-test {
-    systemProperty('java.util.logging.manager', 'org.jboss.logmanager.LogManager')
-}
 

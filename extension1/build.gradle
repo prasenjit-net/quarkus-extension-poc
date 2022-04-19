@@ -3,7 +3,11 @@ plugins {
     id 'org.kordamp.gradle.jandex'
 }
 
-description = 'Gradle POC Extension'
+description = 'Extension 1'
+
+quarkusExtension {
+    deploymentModule = 'extension1-deployment'
+}
 
 dependencies {
     implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")

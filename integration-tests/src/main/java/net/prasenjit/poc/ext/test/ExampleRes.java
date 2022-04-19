@@ -1,12 +1,13 @@
 package net.prasenjit.poc.ext.test;
 
 import net.prasenjit.poc.quarkus.runtime.ExtensionBean;
-import net.prasenjit.poc.quarkus.runtime.MyConfig;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 /**
  * An example resource class
@@ -19,9 +20,6 @@ public class ExampleRes {
     @Inject
     ExtensionBean extensionBean;
 
-    @Inject
-    MyConfig config;
-
     /**
      * GET rest resource
      *
@@ -29,6 +27,7 @@ public class ExampleRes {
      * @return a greeting text
      */
     @GET
+    @Produces(MediaType.TEXT_PLAIN)
     public String greet(@QueryParam("name") String name) {
         return extensionBean.greet(name);
     }
