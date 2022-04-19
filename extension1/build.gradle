@@ -13,5 +13,8 @@ dependencies {
     implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")
     implementation 'io.quarkus:quarkus-undertow'
     implementation 'io.quarkus:quarkus-resteasy'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.quarkus:quarkus-junit5-mockito'
 }
 
