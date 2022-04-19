@@ -49,6 +49,7 @@ public class GreetingExtensionProcessor {
      */
     @BuildStep
     AdditionalBeanBuildItem createExtensionBean() {
+        System.err.println("Called");
         return AdditionalBeanBuildItem.builder()
                 .addBeanClasses(ExtensionBean.class)
                 .setDefaultScope(BuiltinScope.APPLICATION.getName())

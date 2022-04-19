@@ -19,8 +19,8 @@ public class ExampleRes {
     @Inject
     ExtensionBean extensionBean;
 
-    @Inject
-    MyConfig config;
+//    @Inject
+//    MyConfig config;
 
     /**
      * GET rest resource

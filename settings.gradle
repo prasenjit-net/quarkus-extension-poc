@@ -1,6 +1,8 @@
 rootProject.name = 'gradle-poc'
 
-include(':runtime', ':deployment', ':integration-tests')
+//include(':runtime', ':deployment')
+include(':extension1', ':extension1-deployment')
+include(':integration-tests')
 
 buildscript {
     repositories {

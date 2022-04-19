@@ -7,6 +7,6 @@ description = 'Gradle POC Extension Integration Test'
 
 dependencies {
     implementation platform("io.quarkus:quarkus-bom:${quarkusVersion}")
-    implementation(project(':runtime'))
+    implementation(project(':extension1'))
     implementation('io.quarkus:quarkus-resteasy')
 }
