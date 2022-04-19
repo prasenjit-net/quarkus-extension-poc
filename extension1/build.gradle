@@ -1,11 +1,12 @@
 plugins {
     id 'io.quarkus.extension'
+    id 'org.kordamp.gradle.jandex'
 }
 
 description = 'Extension 1'
 
 quarkusExtension {
-    deploymentArtifact = "${grouipId}:extension1-deployment:${revision}"
+    deploymentModule = 'extension1-deployment'
 }
 
 dependencies {
